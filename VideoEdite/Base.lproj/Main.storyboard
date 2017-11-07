@@ -16,7 +16,44 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Wo-dZ-ZNP">
+                                <rect key="frame" x="156" y="318" width="62" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-3d-Mas">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="视频裁剪"/>
+                                        <connections>
+                                            <action selector="videoTailor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXd-7s-tgh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE1-Je-WyZ">
+                                <rect key="frame" x="156" y="238" width="62" height="30"/>
+                                <state key="normal" title="视频合成"/>
+                                <connections>
+                                    <action selector="videoComposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wUM-Rh-mwm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-Ny-iE8">
+                                <rect key="frame" x="147" y="398" width="81" height="30"/>
+                                <state key="normal" title="插入Gif动画"/>
+                                <connections>
+                                    <action selector="insetGIF:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KKg-Gk-EAA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="top" secondItem="wE1-Je-WyZ" secondAttribute="bottom" constant="50" id="3iS-Nr-yKs"/>
+                            <constraint firstItem="4Tc-Ny-iE8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mht-mV-gBm"/>
+                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W9O-fG-70R"/>
+                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YRp-wE-Ijm"/>
+                            <constraint firstItem="wE1-Je-WyZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bcm-Mr-P3S"/>
+                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qR7-wj-fok"/>
+                            <constraint firstItem="4Tc-Ny-iE8" firstAttribute="top" secondItem="5Wo-dZ-ZNP" secondAttribute="bottom" constant="50" id="xFn-jK-3GR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
