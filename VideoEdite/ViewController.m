@@ -40,17 +40,18 @@
 
 - (void)setPlayVideo {
     
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/video.mp4", path]];
+    NSString *document = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     
-    if(![[NSFileManager defaultManager]fileExistsAtPath:url.absoluteString]) {
+    NSString *path = [NSString stringWithFormat:@"%@/video.mp4", document];
+    
+    if(![[NSFileManager defaultManager]fileExistsAtPath:path]) {
         return;
     }
         self.closeBtn.hidden = NO;
         self.replayBtn.hidden = NO;
         VideoPlayerView *playerView = [[VideoPlayerView alloc] initWithFrame:CGRectZero];
         playerView.delegate = self;
-        playerView.videoURL = url;
+        playerView.videoURL = [NSURL fileURLWithPath:path];
         playerView.size =CGSizeMake( playerView.videoSize.width * 0.5, playerView.videoSize.height * 0.5);
         playerView.center = self.view.center;
         playerView.layer.cornerRadius = 8;
