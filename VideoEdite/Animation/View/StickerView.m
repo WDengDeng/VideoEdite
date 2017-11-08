@@ -134,7 +134,7 @@ static inline BOOL isStringEmpty(NSString *value)
         _largeView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
         _largeView.image = [UIImage imageNamed:@"video_edite_large"];
         _largeView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-        _largeView.center = CGPointMake(_imageView.d_width + _imageView.frame.origin.x, _imageView.d_height + _imageView.frame.origin.y);
+        _largeView.center = CGPointMake(_imageView.width + _imageView.frame.origin.x, _imageView.height + _imageView.frame.origin.y);
         [self addSubview:_largeView];
         
   
@@ -169,7 +169,7 @@ static inline BOOL isStringEmpty(NSString *value)
         _largeView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];
         _largeView.image = [UIImage imageNamed:@"video_edite_large"];
         _largeView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-        _largeView.center = CGPointMake(_imageView.d_width + _imageView.frame.origin.x, _imageView.d_height + _imageView.frame.origin.y);
+        _largeView.center = CGPointMake(_imageView.width + _imageView.frame.origin.x, _imageView.height + _imageView.frame.origin.y);
         
         [self addSubview:_largeView];
         
@@ -272,10 +272,10 @@ static inline BOOL isStringEmpty(NSString *value)
     _imageView.transform = CGAffineTransformMakeScale(scaleX, scaleY);
     
     CGRect rct = self.frame;
-    rct.origin.x += (rct.size.width - (_imageView.d_width + 32)) / 2;
-    rct.origin.y += (rct.size.height - (_imageView.d_height + 32)) / 2;
-    rct.size.width  = _imageView.d_width + 32;
-    rct.size.height = _imageView.d_height + 32;
+    rct.origin.x += (rct.size.width - (_imageView.width + 32)) / 2;
+    rct.origin.y += (rct.size.height - (_imageView.height + 32)) / 2;
+    rct.size.width  = _imageView.width + 32;
+    rct.size.height = _imageView.height + 32;
     self.frame = rct;
     
     _imageView.center = CGPointMake(rct.size.width/2, rct.size.height/2);

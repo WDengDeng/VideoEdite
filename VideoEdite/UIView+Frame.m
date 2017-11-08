@@ -10,138 +10,135 @@
 
 @implementation UIView (Frame)
 
-- (void)setD_x:(CGFloat)d_x{
+- (void)setX:(CGFloat)x{
     
     CGRect frame = self.frame;
-    frame.origin.x = d_x;
+    frame.origin.x = x;
     self.frame = frame;
     
 }
 
-- (CGFloat)d_x{
+- (CGFloat)x{
     
     return self.frame.origin.x;
 }
 
-- (void)setD_y:(CGFloat)d_y{
+- (void)setY:(CGFloat)y{
     CGRect frame = self.frame;
-    frame.origin.y = d_y;
+    frame.origin.y = y;
     self.frame = frame;
 }
 
-- (CGFloat)d_y{
+- (CGFloat)y{
     
     return self.frame.origin.y;
 }
 
-
-- (CGFloat)d_top
+- (CGFloat)top
 {
     return self.frame.origin.y;
 }
-- (void)setD_top:(CGFloat)d_top
+- (void)setTop:(CGFloat)aTop
 {
     CGRect frame = self.frame;
-    frame.origin.y = d_top;
+    frame.origin.y = aTop;
     self.frame = frame;
 }
 
-
-- (CGFloat)d_left
+- (CGFloat)left
 {
     return self.frame.origin.x;
 }
-- (void)setD_left:(CGFloat)d_left
+- (void)setLeft:(CGFloat)aLeft
 {
     CGRect frame = self.frame;
-    frame.origin.x = d_left;
+    frame.origin.x = aLeft;
     self.frame = frame;
 }
 
-
-- (CGFloat)d_bottom
+- (CGFloat)bottom
 {
     return self.frame.origin.y + self.frame.size.height;
 }
-- (void)setD_bottom:(CGFloat)d_bottom
+- (void)setBottom:(CGFloat)aBottom
 {
     CGRect frame = self.frame;
-    frame.origin.y = d_bottom - self.frame.size.height;
+    frame.origin.y = aBottom - self.frame.size.height;
     self.frame = frame;
 }
 
-- (CGFloat)d_right
+- (CGFloat)right
 {
     return self.frame.origin.x + self.frame.size.width;
 }
-- (void)setD_right:(CGFloat)d_right
+- (void)setRight:(CGFloat)aRight
 {
     CGRect frame = self.frame;
-    frame.origin.x = d_right - self.frame.size.width;
+    frame.origin.x = aRight - self.frame.size.width;
     self.frame = frame;
 }
 
-- (CGFloat)d_centerX
+- (CGFloat)centerX
 {
     return self.center.x;
 }
-- (void)setD_centerX:(CGFloat)d_centerX
+- (void)setCenterX:(CGFloat)aCenterX
 {
     CGPoint center = self.center;
-    center.x = d_centerX;
+    center.x = aCenterX;
     self.center = center;
 }
 
-- (CGFloat)d_centerY
+- (CGFloat)centerY
 {
     return self.center.y;
 }
-- (void)setD_centerY:(CGFloat)d_centerY
+- (void)setCenterY:(CGFloat)aCenterY
 {
     CGPoint center = self.center;
-    center.y = d_centerY;
+    center.y = aCenterY;
     self.center = center;
 }
 
-- (CGFloat)d_width
+//宽度
+- (CGFloat)width
 {
     return self.frame.size.width;
 }
-- (void)setD_width:(CGFloat)d_width
+- (void)setWidth:(CGFloat)aWidth
 {
     CGRect frame = self.frame;
-    frame.size.width = d_width;
+    frame.size.width = aWidth;
     self.frame = frame;
 }
 
-- (void)setD_origin:(CGPoint)d_origin {
+- (void)setOrigin:(CGPoint)origin {
     CGRect frame = self.frame;
-    frame.origin = d_origin;
+    frame.origin = origin;
     self.frame = frame;
 }
 
-- (CGPoint)d_origin {
+- (CGPoint)origin {
     return self.frame.origin;
 }
 
-- (CGFloat)d_height
+- (CGFloat)height
 {
     return self.frame.size.height;
 }
-- (void)setD_height:(CGFloat)d_height
+- (void)setHeight:(CGFloat)aHeight
 {
     CGRect frame = self.frame;
-    frame.size.height = d_height;
+    frame.size.height = aHeight;
     self.frame = frame;
 }
 
-- (CGSize)d_size {
+- (CGSize)size {
     return self.frame.size;
 }
-- (void)setD_size:(CGSize)d_size {
+- (void)setSize:(CGSize)size {
     CGRect frame = self.frame;
-    frame.size = d_size;
+    frame.size = size;
     self.frame = frame;
 }
-
 @end

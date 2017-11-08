@@ -8,8 +8,8 @@
 
 //  动画起始 持续 时间
 typedef  struct  TimeRange{
-    CGFloat beginValue;
-    CGFloat endValue;
+    CGFloat beginPercent;
+    CGFloat endPercent;
 }TimeRange;
 
 

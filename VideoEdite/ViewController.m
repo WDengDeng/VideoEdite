@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "GifViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "VideoPlayerView.h"
+#import "UIView+Frame.h"
 
 @interface ViewController ()
 
@@ -30,22 +32,13 @@
 }
 - (IBAction)videoTailor:(id)sender {
     
-    //初始化语音播报
-    AVSpeechSynthesizer * av = [[AVSpeechSynthesizer alloc]init];
-    //设置播报的内容
-    AVSpeechUtterance * utterance = [[AVSpeechUtterance alloc]initWithString:@"视频裁剪"];
-    AVSpeechSynthesisVoice * voiceType = [AVSpeechSynthesisVoice voiceWithLanguage:@"zh-cn"];
-    utterance.voice = voiceType;
-    //设置播报语速
-    utterance.rate = 0.4;
-    [av speakUtterance:utterance];
+
     
 }
 
 
 - (IBAction)insetGIF:(id)sender {
     [self presentViewController:[GifViewController new] animated:YES completion:nil];
-    
 }
 
 

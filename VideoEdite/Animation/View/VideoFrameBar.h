@@ -19,6 +19,7 @@
 
 @property(nonatomic, weak) id delegate;
 @property(nonatomic, assign) CGFloat percent;
+@property(nonatomic, assign) BOOL hiddenHandle;
 
 - (instancetype)initWithFrame:(CGRect)frame url:(NSURL *)url;
 

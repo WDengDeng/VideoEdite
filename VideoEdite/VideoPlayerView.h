@@ -21,12 +21,12 @@
 @property (nonatomic,assign) CGFloat percent;
 @property (nonatomic,strong) NSURL *videoURL;
 @property (nonatomic,weak) id <VideoPlayerViewDelegate>delegate;
-@property (nonatomic,assign, readonly) CGFloat totalTime;
+@property (nonatomic,assign, readonly) CGFloat totalTime; 
 
 - (instancetype)initWithFrame:(CGRect)frame ; 
 - (void)play;
 - (void)pause;
-- (void)destroyEvent;
+- (void)destroy;
 
 
 @end

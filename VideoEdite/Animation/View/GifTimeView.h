@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GifTimeView : UIView
+@interface GifTimeView : UIImageView
+
+@property (nonatomic,copy) void(^blockValue)(CGFloat leftPercent, CGFloat rightPercent);
+@property (nonatomic,assign, readonly) CGFloat leftPercent;
+@property (nonatomic,assign, readonly) CGFloat rightPercent;
+
+- (void)currentLeft:(CGFloat)leftPercent rightPercent:(CGFloat)rightPercent;
 
 @end

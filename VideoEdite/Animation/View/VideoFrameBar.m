@@ -43,10 +43,10 @@
     AVAsset *asset = [AVAsset assetWithURL:self.url];
     _totalTime = CMTimeGetSeconds(asset.duration);
         NSTimeInterval time = _totalTime / 10 ;
-        CGFloat width = self.d_width / 10;
+        CGFloat width = self.width / 10;
         for (int i = 0; i < 10; i++) {
             [self thumbnailImageAtTime:time * (i + 1) image:^(UIImage *image) {
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * width, 0, width, self.d_height)];
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * width, 0, width, self.height)];
                  imageView.image = image;
                 imageView.contentMode = UIViewContentModeScaleAspectFill;
                 imageView.layer.masksToBounds = YES;
@@ -97,12 +97,12 @@
 - (void)configureView {
     
     
-    UIView *handleBgView = [[UIView alloc] initWithFrame:CGRectMake(4, 0, self.d_width - 8, self.d_height)];
+    UIView *handleBgView = [[UIView alloc] initWithFrame:CGRectMake(4, 0, self.width - 8, self.height)];
     [self addSubview:handleBgView];
     self.handleBgView = handleBgView;
     
-    UIImageView *handleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, self.d_height)];
-    handleView.d_centerX = 0;
+    UIImageView *handleView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, self.height)];
+    handleView.centerX = 0;
     handleView.image = [UIImage imageNamed:@"video_edite_handle"];
     handleView.contentMode = UIViewContentModeScaleAspectFit;
     [handleBgView addSubview:handleView];
@@ -120,15 +120,15 @@
     
     CGPoint point = [pan translationInView:self];
     NSLog(@"NSStringFromCGPoint------------%@", NSStringFromCGPoint(point));
-    handleView.d_centerX += point.x;
-    if (handleView.d_centerX <= 0) {
-        handleView.d_centerX = 0;
+    handleView.centerX += point.x;
+    if (handleView.centerX <= 0) {
+        handleView.centerX = 0;
     }
-    if (handleView.d_centerX >= handleBgView.d_width) {
-        handleView.d_centerX = handleBgView.d_width;
+    if (handleView.centerX >= handleBgView.width) {
+        handleView.centerX = handleBgView.width;
     }
     if ([self.delegate respondsToSelector:@selector(dragHandleViewWithPercent:)]) {
-        [self.delegate dragHandleViewWithPercent:handleView.d_centerX*1.0/handleBgView.d_width];
+        [self.delegate dragHandleViewWithPercent:handleView.centerX*1.0/handleBgView.width];
     }
     
     [pan setTranslation:CGPointZero inView:self];
@@ -138,9 +138,14 @@
 
 - (void)setPercent:(CGFloat)percent {
     if (!_isDrag) {
-        self.handleView.d_centerX =  percent * self.handleBgView.d_width;
+        self.handleView.centerX =  percent * self.handleBgView.width;
     }
     _percent = percent;
+}
+
+- (void)setHiddenHandle:(BOOL)hiddenHandle {
+    self.handleView.hidden = hiddenHandle;
+    _hiddenHandle = hiddenHandle;
 }
 
 @end

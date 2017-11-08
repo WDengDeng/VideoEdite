@@ -31,6 +31,7 @@
     }
     return self;
 }
+ 
 
 - (void)play {
     if (_isEnd) {
@@ -92,7 +93,7 @@
     [self.player pause];
 }
 
-- (void)destroyEvent {
+- (void)destroy{
     [self.player pause];
     [self.player removeObserver:self forKeyPath:PLAYING_STATE];
     [self removeFromSuperview];

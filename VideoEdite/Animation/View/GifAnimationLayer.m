@@ -68,7 +68,7 @@ inline static BOOL CGImageSourceHasAlpha(CGImageSourceRef imageSource)
     return result == kCFBooleanTrue;
 }
 
-@interface GifAnimationLayer ()
+@interface GifAnimationLayer ()<CAAnimationDelegate>
 {
     NSTimeInterval *_frameDurationArray;
     NSTimeInterval _totalDuration;

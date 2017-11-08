@@ -18,9 +18,10 @@
 		806B28181FAAE6020073FADF /* GifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B28171FAAE6020073FADF /* GifViewController.m */; };
 		806B281F1FAAE9D20073FADF /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B281E1FAAE9D20073FADF /* UIView+Frame.m */; };
 		806B28221FAAF3B80073FADF /* VideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B28211FAAF3B70073FADF /* VideoPlayerView.m */; };
-		806B28281FAB00710073FADF /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 806B28271FAAFF820073FADF /* video.mp4 */; };
 		809940AA1FB14C2600511B7F /* VideoFrameBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 809940A91FB14C2600511B7F /* VideoFrameBar.m */; };
 		809940AD1FB199F100511B7F /* GifTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 809940AC1FB199F100511B7F /* GifTimeView.m */; };
+		809940B31FB1B71A00511B7F /* VideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 809940B21FB1B71A00511B7F /* VideoManager.m */; };
+		809940B51FB29BEE00511B7F /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 809940B41FB29BEB00511B7F /* video.mp4 */; };
 		80A85E6C1FAB0F9A00485373 /* 0.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A85E621FAB0F9500485373 /* 0.gif */; };
 		80A85E6D1FAB0F9A00485373 /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A85E6B1FAB0F9700485373 /* 1.gif */; };
 		80A85E6E1FAB0F9A00485373 /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 80A85E671FAB0F9600485373 /* 2.gif */; };
@@ -90,11 +91,13 @@
 		806B281E1FAAE9D20073FADF /* UIView+Frame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		806B28201FAAF3B70073FADF /* VideoPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPlayerView.h; sourceTree = "<group>"; };
 		806B28211FAAF3B70073FADF /* VideoPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerView.m; sourceTree = "<group>"; };
-		806B28271FAAFF820073FADF /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		809940A81FB14C2600511B7F /* VideoFrameBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoFrameBar.h; sourceTree = "<group>"; };
 		809940A91FB14C2600511B7F /* VideoFrameBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoFrameBar.m; sourceTree = "<group>"; };
 		809940AB1FB199F100511B7F /* GifTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifTimeView.h; sourceTree = "<group>"; };
 		809940AC1FB199F100511B7F /* GifTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifTimeView.m; sourceTree = "<group>"; };
+		809940B11FB1B71A00511B7F /* VideoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoManager.h; sourceTree = "<group>"; };
+		809940B21FB1B71A00511B7F /* VideoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoManager.m; sourceTree = "<group>"; };
+		809940B41FB29BEB00511B7F /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		80A85E551FAB0F9400485373 /* 15.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 15.gif; sourceTree = "<group>"; };
 		80A85E561FAB0F9400485373 /* 21.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 21.gif; sourceTree = "<group>"; };
 		80A85E571FAB0F9400485373 /* 17.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 17.gif; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				806B27E91FAAAFE30073FADF /* Main.storyboard */,
 				806B28201FAAF3B70073FADF /* VideoPlayerView.h */,
 				806B28211FAAF3B70073FADF /* VideoPlayerView.m */,
+				809940B11FB1B71A00511B7F /* VideoManager.h */,
+				809940B21FB1B71A00511B7F /* VideoManager.m */,
 				80A85E831FAB17FF00485373 /* Animation */,
 				806B27EC1FAAAFE30073FADF /* Assets.xcassets */,
 				806B27EE1FAAAFE30073FADF /* LaunchScreen.storyboard */,
@@ -248,8 +253,8 @@
 		806B28231FAAF5EE0073FADF /* Resouce */ = {
 			isa = PBXGroup;
 			children = (
+				809940B41FB29BEB00511B7F /* video.mp4 */,
 				806B28191FAAE6110073FADF /* gif */,
-				806B28271FAAFF820073FADF /* video.mp4 */,
 			);
 			path = Resouce;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				80A85E6E1FAB0F9A00485373 /* 2.gif in Resources */,
 				80A85E6D1FAB0F9A00485373 /* 1.gif in Resources */,
 				80A85E7E1FAB0F9A00485373 /* 18.gif in Resources */,
+				809940B51FB29BEE00511B7F /* video.mp4 in Resources */,
 				80A85E6C1FAB0F9A00485373 /* 0.gif in Resources */,
 				80A85E811FAB0F9A00485373 /* 21.gif in Resources */,
 				806B27F01FAAAFE30073FADF /* LaunchScreen.storyboard in Resources */,
@@ -413,7 +419,6 @@
 				80A85E701FAB0F9A00485373 /* 4.gif in Resources */,
 				806B27EB1FAAAFE30073FADF /* Main.storyboard in Resources */,
 				80A85E781FAB0F9A00485373 /* 12.gif in Resources */,
-				806B28281FAB00710073FADF /* video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +453,7 @@
 				80A85E8E1FAB188800485373 /* FLAnimatedImage.m in Sources */,
 				809940AD1FB199F100511B7F /* GifTimeView.m in Sources */,
 				806B27E51FAAAFE30073FADF /* AppDelegate.m in Sources */,
+				809940B31FB1B71A00511B7F /* VideoManager.m in Sources */,
 				806B281F1FAAE9D20073FADF /* UIView+Frame.m in Sources */,
 				806B28181FAAE6020073FADF /* GifViewController.m in Sources */,
 			);

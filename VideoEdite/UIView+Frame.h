@@ -13,17 +13,17 @@
 
 @interface UIView (Frame)
 
-@property (nonatomic) CGFloat d_x;
-@property (nonatomic) CGFloat d_y;
+@property (nonatomic,assign) CGFloat x;
+@property (nonatomic,assign) CGFloat y;
 
-@property(nonatomic) CGFloat d_top;
-@property(nonatomic) CGFloat d_left;
-@property(nonatomic) CGFloat d_bottom;
-@property(nonatomic) CGFloat d_right;
-@property(nonatomic) CGFloat d_centerX;
-@property(nonatomic) CGFloat d_centerY;
-@property(nonatomic) CGFloat d_width;
-@property(nonatomic) CGFloat d_height;
-@property(nonatomic) CGPoint d_origin;
-@property (nonatomic,assign) CGSize d_size;
+@property(nonatomic,assign) CGFloat top;
+@property(nonatomic,assign) CGFloat left;
+@property(nonatomic,assign) CGFloat bottom;
+@property(nonatomic,assign) CGFloat right;
+@property(nonatomic,assign) CGFloat centerX;
+@property(nonatomic,assign) CGFloat centerY;
+@property(nonatomic,assign) CGFloat width;
+@property(nonatomic,assign) CGFloat height;
+@property(nonatomic,assign) CGPoint origin;
+@property (nonatomic,assign) CGSize size;
 @end
