@@ -4,7 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,49 +19,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Wo-dZ-ZNP">
-                                <rect key="frame" x="156" y="318" width="62" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-3d-Mas">
-                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
-                                        <state key="normal" title="视频裁剪"/>
-                                        <connections>
-                                            <action selector="videoTailor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXd-7s-tgh"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Wo-dZ-ZNP">
+                                <rect key="frame" x="101" y="556" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE1-Je-WyZ">
-                                <rect key="frame" x="156" y="238" width="62" height="30"/>
-                                <state key="normal" title="视频合成"/>
-                                <connections>
-                                    <action selector="videoComposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wUM-Rh-mwm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-Ny-iE8">
-                                <rect key="frame" x="147" y="398" width="81" height="30"/>
+                                <rect key="frame" x="147" y="318" width="81" height="30"/>
                                 <state key="normal" title="插入Gif动画"/>
                                 <connections>
                                     <action selector="insetGIF:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KKg-Gk-EAA"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE1-Je-WyZ">
+                                <rect key="frame" x="71.5" y="627" width="46" height="30"/>
+                                <state key="normal" title="Replay"/>
+                                <connections>
+                                    <action selector="replayBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BgM-lc-SbE"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-3d-Mas">
+                                <rect key="frame" x="262" y="627" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pJe-sS-2cN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="top" secondItem="wE1-Je-WyZ" secondAttribute="bottom" constant="50" id="3iS-Nr-yKs"/>
-                            <constraint firstItem="4Tc-Ny-iE8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mht-mV-gBm"/>
-                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W9O-fG-70R"/>
-                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YRp-wE-Ijm"/>
-                            <constraint firstItem="wE1-Je-WyZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bcm-Mr-P3S"/>
-                            <constraint firstItem="5Wo-dZ-ZNP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qR7-wj-fok"/>
-                            <constraint firstItem="4Tc-Ny-iE8" firstAttribute="top" secondItem="5Wo-dZ-ZNP" secondAttribute="bottom" constant="50" id="xFn-jK-3GR"/>
+                            <constraint firstItem="zuh-3d-Mas" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.5" id="5p4-Ca-CSj"/>
+                            <constraint firstItem="4Tc-Ny-iE8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5yV-51-XEC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zuh-3d-Mas" secondAttribute="bottom" constant="10" id="CAM-ct-7WU"/>
+                            <constraint firstItem="4Tc-Ny-iE8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EcK-9w-xJB"/>
+                            <constraint firstItem="wE1-Je-WyZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="bhe-K4-vTo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wE1-Je-WyZ" secondAttribute="bottom" constant="10" id="iKn-aq-muo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="zuh-3d-Mas" id="CFI-LR-LlI"/>
+                        <outlet property="replayBtn" destination="wE1-Je-WyZ" id="PHN-gs-YXc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-286" y="111"/>
+            <point key="canvasLocation" x="-287.19999999999999" y="110.19490254872565"/>
         </scene>
     </scenes>
 </document>

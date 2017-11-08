@@ -32,6 +32,10 @@
     return self;
 }
  
+- (CGSize)videoSize {
+    
+    return  self.asset.naturalSize;
+}
 
 - (void)play {
     if (_isEnd) {
@@ -39,6 +43,11 @@
     }
     _isEnd = NO;
     [self.player play];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.playLayer.frame = self.bounds;
 }
 
 - (void)setVideoURL:(NSURL *)videoURL {
@@ -105,8 +114,8 @@
     _isEnd = YES;
     [self.player pause];
     [self.player seekToTime:kCMTimeZero];
-    if ([self.delegate respondsToSelector:@selector(playFinish)]) {
-        [self.delegate playFinish];
+    if ([self.delegate respondsToSelector:@selector(playFinish:)]) {
+        [self.delegate playFinish:self];
     }
 }
 

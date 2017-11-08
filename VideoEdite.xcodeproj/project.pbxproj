@@ -270,6 +270,8 @@
 		80A85E841FAB183E00485373 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				809940AB1FB199F100511B7F /* GifTimeView.h */,
+				809940AC1FB199F100511B7F /* GifTimeView.m */,
 				809940A81FB14C2600511B7F /* VideoFrameBar.h */,
 				809940A91FB14C2600511B7F /* VideoFrameBar.m */,
 				80A85E8B1FAB186500485373 /* StickerView.h */,
@@ -280,8 +282,6 @@
 				80A85E871FAB185400485373 /* FLAnimatedImageView.m */,
 				80A85E881FAB185400485373 /* GifAnimationLayer.h */,
 				80A85E8A1FAB185400485373 /* GifAnimationLayer.m */,
-				809940AB1FB199F100511B7F /* GifTimeView.h */,
-				809940AC1FB199F100511B7F /* GifTimeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";

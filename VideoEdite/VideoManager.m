@@ -60,51 +60,16 @@
 - (CALayer *)createAnimationLayer:(StickerView *)view videoSizeResult:(CGSize)videoSizeResult{
     
     CALayer *animatedLayer = nil;
-    
     NSString *gifPath = view.getFilePath;
     CGFloat maxScale = 0;
-    CGFloat videoW = 0;
-    CGFloat videoH = 0;
-    CGFloat videoX = 0;
-    CGFloat videoY = 0;
-    
-    if ((videoSizeResult.width / videoSizeResult.height) > (D_SCREEN_WIDTH/D_SCREEN_HEIGHT)) { // 宽
-        maxScale = videoSizeResult.width / D_SCREEN_WIDTH;
-        
-        videoW =  D_SCREEN_WIDTH;
-        videoX = 0;
-        
-        videoH = videoSizeResult.height / maxScale;
-        videoY = (D_SCREEN_HEIGHT  - videoH) / 2;
-        
-    } else { // 高
-        maxScale = videoSizeResult.height / D_SCREEN_HEIGHT;
-        
-        videoH =  D_SCREEN_HEIGHT;
-        videoY = 0;
-        
-        videoW =  videoSizeResult.width / maxScale;
-        videoX = (D_SCREEN_WIDTH - videoW) / 2;
-    }
-    
-#warning TODO
-    
-    CGFloat originX = view.frame.origin.x - videoX;
-    CGFloat originY = view.frame.origin.y - (videoY+ videoH);
-    CGFloat aniX = originX * maxScale;
-    
-    
+    maxScale = (videoSizeResult.width / videoSizeResult.height) > (D_SCREEN_WIDTH/D_SCREEN_HEIGHT) ?  videoSizeResult.width / D_SCREEN_WIDTH : videoSizeResult.height / D_SCREEN_HEIGHT;
     view.imageFrame = [view getInnerFrame];
     
-    UIView *views = [[UIView alloc] initWithFrame:CGRectMake(0, 0, videoSizeResult.width, videoSizeResult.height)];
-    CGRect frames = [view.superview convertRect:view.frame toView:views];
+    CGFloat widthFactor  = videoSizeResult.width / CGRectGetWidth(view.getInnerFrame);
+    CGFloat heightFactor = CGRectGetHeight(view.getVideoContentRect) / CGRectGetHeight(view.getInnerFrame);
     
-    
-    CGFloat aniY =  originY > 0 ? (-originY + view.imageFrame.size.height - 16) * maxScale : (-originY - view.imageFrame.size.height - 16) * maxScale;
-    CGRect gifFrame = CGRectMake(aniX, aniY, view.imageFrame.size.width * maxScale, view.imageFrame.size.height * maxScale);
-    if (gifFrame.size.width == 0  || gifFrame.size.height == 0 || (isnan( gifFrame.size.width) || isnan( gifFrame.size.width)) ) {
-        return nil;
-    }
+    CGPoint origin = CGPointMake((view.getInnerFrame.origin.x / CGRectGetWidth(view.getVideoContentRect)) * videoSizeResult.width,  videoSizeResult.height - ((view.getInnerFrame.origin.y / CGRectGetHeight(view.getVideoContentRect)) * videoSizeResult.height) - videoSizeResult.height/heightFactor);
+    CGRect gifFrame = CGRectMake(origin.x, origin.y, view.imageFrame.size.height * maxScale, view.imageFrame.size.height * maxScale);
     
     // 动画时间设置
     CGFloat second = CMTimeGetSeconds(self.asset.duration);
@@ -318,11 +283,9 @@
                 break;
                 
             default:{
-                //                    dispatch_sync(dispatch_get_main_queue(), ^{
                 if (failedBlock) {
                     failedBlock( exportSession.error);
                 }
-                //                    });
             }
                 break;
                 
@@ -352,7 +315,7 @@
 }
 
 - (void)cancelExport {
-    
+    [self.exportSession cancelExport];
     [self.timer invalidate];
     self.timer = nil;
 }

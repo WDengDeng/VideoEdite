@@ -187,6 +187,21 @@ static NSString *const CellID = @"gifcellid";
     }];
 }
 
+- (void)updatePlayGifs {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for (StickerView *view in self.stickerViews) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                if (self.frameBar.percent <= (view.timeRange.endPercent + view.timeRange.beginPercent) && self.frameBar.percent >= view.timeRange.beginPercent) {
+                    view.hidden = NO;
+                } else {
+                    view.hidden = YES;
+                }
+            });
+        }
+    });
+    
+}
+
 #pragma mark - Event
 
 - (void)event_cancel:(UIButton *)btn {
@@ -200,6 +215,7 @@ static NSString *const CellID = @"gifcellid";
     label.layer.opacity = 0.6;
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
+    label.userInteractionEnabled = YES;
     [self.view addSubview:label];
     [[VideoManager new] exportGifVideoWithGifs:self.stickerViews  url:self.playerView.videoURL Progress:^(CGFloat progress) {
         label.text = [NSString stringWithFormat:@"%.0f%%", progress*100];
@@ -208,7 +224,9 @@ static NSString *const CellID = @"gifcellid";
         
     } finished:^(NSURL *videoUrl) {
         [label removeFromSuperview];
-        NSLog(@"成功-------%@", videoUrl);
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:ExportVideoCompletion object:nil];
+        }];
     }];
     
 }
@@ -228,6 +246,7 @@ static NSString *const CellID = @"gifcellid";
     
     self.frameBar.hiddenHandle = NO;
     self.timeView.hidden = YES;
+    [self.sticker isHiddenBorder:YES];
     [self.playerView play];
 }
 
@@ -276,10 +295,15 @@ static NSString *const CellID = @"gifcellid";
 - (void)videoPlayPercent:(CGFloat)percent {
  
     self.frameBar.percent = percent;
+    if (self.playBtn.selected) {
+        [self updatePlayGifs];
+    }
+  
 }
 
-- (void)playFinish {
-    
+
+- (void)playFinish:(VideoPlayerView *)playerView {
+
 }
 
 
@@ -292,7 +316,7 @@ static NSString *const CellID = @"gifcellid";
 
 - (void)moveView:(StickerView *)view {
     
-    [self dragGif];
+    [self dragGif:view];
 }
 
 - (void)EndTouchView:(StickerView *)view {
@@ -311,6 +335,8 @@ static NSString *const CellID = @"gifcellid";
     self.playerView.percent = percent;
     [self pauseVideo];
     self.playBtn.selected = NO;
+    
+    [self updatePlayGifs];
 }
 
 
@@ -330,15 +356,15 @@ static NSString *const CellID = @"gifcellid";
     [stickView setVideoContentRect:self.playerView.frame];
     
     stickView.delegate = self;
+    __weak typeof(stickView) weakStickView = stickView;
     stickView.deleteFinishBlock = ^(BOOL success, id result) {
-        [self deleteGif:index];
-        [self.stickerViews removeObject:result];
-        self.timeView.hidden = !self.stickerViews.count;
+        [self deleteGif:weakStickView];
     };
     
     TimeRange timeRange = {self.playerView.percent, 0.2};
     stickView.timeRange = timeRange;
     [self.timeView currentLeft:timeRange.beginPercent rightPercent:timeRange.endPercent];
+    self.timeView.hidden = NO;
     
     self.sticker= stickView;
     [self.playerView addSubview:stickView];
@@ -352,26 +378,30 @@ static NSString *const CellID = @"gifcellid";
         [self event_playVideo:self.playBtn];
     }
     
-//    self.stickView = view;
+    self.sticker = view;
+    [view isHiddenBorder:NO];
     self.timeView.hidden = NO;
-//    [self.stickView isHiddenBorder:NO];
-//    self.progressBar.sliderView.handleView.hidden = YES;
-//    [self.timeView currentLeft:view.timeRange.beginPercent rightValue:view.timeRange.endPercent];
-    
+    self.frameBar.hiddenHandle = YES;
     [self.timeView currentLeft:view.timeRange.beginPercent rightPercent:view.timeRange.endPercent];
     
 }
 // 拖动gif
-- (void)dragGif {
+- (void)dragGif:(StickerView *)view  {
     [self hiddenBar];
     
+    self.sticker = view;
+    [view isHiddenBorder:NO];
+    self.timeView.hidden = NO;
+    self.frameBar.hiddenHandle = YES;
+    [self.timeView currentLeft:view.timeRange.beginPercent rightPercent:view.timeRange.endPercent];
 }
 
 // 删除gif
-- (void)deleteGif:(NSInteger)index {
+- (void)deleteGif:(StickerView *)view {
     
-    
-    NSLog(@"xx");
+    [self.stickerViews removeObject:view];
+    self.timeView.hidden = !self.stickerViews.count;
+    self.frameBar.hiddenHandle = self.stickerViews.count;
 }
 
 // 2.FrameBar
@@ -384,6 +414,9 @@ static NSString *const CellID = @"gifcellid";
         [self event_playVideo:self.playBtn];
     }
     
+    [self.sticker isHiddenBorder: YES];
+    self.timeView.hidden = YES;
+    self.frameBar.hiddenHandle = NO;
 }
 
 

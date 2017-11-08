@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class VideoPlayerView;
 @protocol VideoPlayerViewDelegate <NSObject>
 
 - (void)changeSliderViewWithPercent:(CGFloat)percent;
 - (void)videoPlayPercent:(CGFloat)percent ;
-- (void)playFinish;
+- (void)playFinish:(VideoPlayerView *)playerView;
 
 @end
 
@@ -22,7 +22,7 @@
 @property (nonatomic,strong) NSURL *videoURL;
 @property (nonatomic,weak) id <VideoPlayerViewDelegate>delegate;
 @property (nonatomic,assign, readonly) CGFloat totalTime; 
-
+@property(nonatomic, assign) CGSize videoSize;
 - (instancetype)initWithFrame:(CGRect)frame ; 
 - (void)play;
 - (void)pause;

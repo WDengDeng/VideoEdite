@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *const ExportVideoCompletion = @"ExportVideoCompletion";
 
 @interface VideoManager : NSObject
  
 
 - (void)exportGifVideoWithGifs:(NSArray *)gifs url:(NSURL *)url Progress:(void(^)(CGFloat progress))progressBlock failed:(void(^)(NSError *error))failedBlock finished:(void(^)(NSURL *videoUrl))saveBlock;
-
-
 - (void)cancelExport;
+
+
 @end

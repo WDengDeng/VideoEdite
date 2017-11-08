@@ -44,6 +44,7 @@ static NSInteger Handle_W = 15;
     UIPanGestureRecognizer *panL = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveView:)];
     [leftView addGestureRecognizer:panL];
     self.leftView = leftView;
+    
 }
 
 - (void)moveView:(UIPanGestureRecognizer *)pan {
@@ -83,7 +84,7 @@ static NSInteger Handle_W = 15;
     self.leftView.frame = CGRectMake(0, 0, self.width - Handle_W , self.height);
     self.rightView.frame = CGRectMake(self.width - Handle_W, 0, Handle_W, self.height);
     _leftPercent = self.x / D_SCREEN_WIDTH;
-    _rightPercent = (self.x + self.width ) / D_SCREEN_WIDTH;
+    _rightPercent =  self.width  / D_SCREEN_WIDTH;
     
     if (self.blockValue) {
         self.blockValue(_leftPercent, _rightPercent);
@@ -91,10 +92,22 @@ static NSInteger Handle_W = 15;
 }
 
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.rightView.width = Handle_W;
+    self.rightView.right = self.width;
+    self.leftView.left = 0;
+    self.leftView.right = self.rightView.left;
+}
+
 - (void)currentLeft:(CGFloat)leftPercent rightPercent:(CGFloat)rightPercent {
      self.x = leftPercent * D_SCREEN_WIDTH ;
-     self.width = (rightPercent * D_SCREEN_WIDTH  - self.x);
-    [self updateLayout];
+     self.width = rightPercent * D_SCREEN_WIDTH;
+    if (self.right >= D_SCREEN_WIDTH) {
+        self.right = D_SCREEN_WIDTH;
+    }
+    
+    
 }
  
 @end
